@@ -1,4 +1,3 @@
-import { Container, Grid, SideBar } from "./styles";
 import locationIcon from "../../assets/icons/map-pin.svg";
 import companyIcon from "../../assets/icons/briefcase.svg";
 import githubIcon from "../../assets/icons/github.svg";
@@ -6,17 +5,24 @@ import linkedInIcon from "../../assets/icons/linkedin.svg";
 import twitterIcon from "../../assets/icons/twitter.svg";
 import siteIcon from "../../assets/icons/globe.svg";
 import addressIcon from "../../assets/icons/mail.svg";
+
+import { Container, Grid, SideBar, Content } from "./styles";
 import { Tag } from "../../components/Tag";
 import { useEffect, useState } from "react";
 import { Itag } from "../../types/Itag";
+import { tags, Repository as Datas } from "./data";
+import { SectionDescription } from "../../components/SectionDescript";
 
-import { tags } from "./data";
+import { Repository } from "../../components/Repository";
+import { IRepository } from "../../types/IRepository";
 
 export function Dashboard() {
   const [tag, setTag] = useState<Itag[]>([]);
+  const [repository, setRepository] = useState<IRepository[]>([]);
 
   useEffect(() => {
     setTag(tags);
+    setRepository(Datas);
   }, []);
 
   return (
@@ -72,12 +78,27 @@ export function Dashboard() {
               </header>
               <div className="content grid">
                 {tag.map((name) => (
-                  <Tag name={name.name} />
+                  <Tag name={name.name} key={name.name} />
                 ))}
               </div>
             </div>
           </SideBar>
-          <section>Section Page</section>
+          <Content>
+            <SectionDescription title="My Projects" action="Veja Todos" />
+            <div className="repository-card">
+              {repository.map(({ title, description, fork, stack, star }) => (
+                <Repository
+                  title={title}
+                  description={description}
+                  fork={fork}
+                  star={star}
+                  stack={stack}
+                  key={title}
+                />
+              ))}
+            </div>
+            <SectionDescription title="Recent Posts" />
+          </Content>
         </Grid>
       </Container>
     </>

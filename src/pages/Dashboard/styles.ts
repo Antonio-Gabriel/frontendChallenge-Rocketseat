@@ -95,3 +95,12 @@ export const SideBar = styled.aside`
   }
 `;
 
+export const Content = styled.section`
+  .repository-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;    
+
+    margin-bottom: 2rem;
+  }
+`;
