@@ -1,5 +1,13 @@
+import { Dashboard } from "./pages/Dashboard";
+import { GlobalStyles } from "./styles/GlocalStyles";
+
 function App() {
-  return <h1>Welcome to My Portofolio</h1>;
+  return (
+    <>
+      <Dashboard />
+      <GlobalStyles />
+    </>
+  );
 }
 
 export default App;
