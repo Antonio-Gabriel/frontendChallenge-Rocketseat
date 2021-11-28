@@ -41,9 +41,9 @@ export const SideBar = styled.aside`
     justify-content: center;
 
     img {
-      height: 120px;
+      height: 128px;
       border-radius: 100%;
-      border: 2.5px solid #5aab45;
+      border: 2px solid #00FF00;
     }
 
     article {
@@ -51,6 +51,7 @@ export const SideBar = styled.aside`
       color: var(--text-color);
 
       h2 {
+        font-size: 1.4375rem;
         margin-bottom: 0.5rem;
       }
       span {
@@ -77,10 +78,11 @@ export const SideBar = styled.aside`
     padding: 2.2rem 0;
 
     header {
-      padding-left: 1rem;
+      padding-left: 1.25rem;
 
       h3 {
         color: var(--text-color);
+        font-size: 1.25rem;
       }
     }
     .grid {

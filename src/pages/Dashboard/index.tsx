@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import locationIcon from "../../assets/icons/map-pin.svg";
 import companyIcon from "../../assets/icons/briefcase.svg";
 import githubIcon from "../../assets/icons/github.svg";
@@ -6,23 +8,26 @@ import twitterIcon from "../../assets/icons/twitter.svg";
 import siteIcon from "../../assets/icons/globe.svg";
 import addressIcon from "../../assets/icons/mail.svg";
 
-import { Container, Grid, SideBar, Content } from "./styles";
-import { Tag } from "../../components/Tag";
-import { useEffect, useState } from "react";
-import { Itag } from "../../types/Itag";
-import { tags, Repository as Datas } from "./data";
 import { SectionDescription } from "../../components/SectionDescript";
+import { Container, Grid, SideBar, Content } from "./styles";
+import { tags, Repository as Datas, Post as Posts } from "./data";
+import { Itag } from "../../types/Itag";
+import { Tag } from "../../components/Tag";
 
-import { Repository } from "../../components/Repository";
 import { IRepository } from "../../types/IRepository";
+import { Repository } from "../../components/Repository";
+import { Post } from "../../components/Post";
+import { IPost } from "../../types/IPost";
 
 export function Dashboard() {
   const [tag, setTag] = useState<Itag[]>([]);
   const [repository, setRepository] = useState<IRepository[]>([]);
+  const [post, setPost] = useState<IPost[]>([]);
 
   useEffect(() => {
     setTag(tags);
     setRepository(Datas);
+    setPost(Posts);
   }, []);
 
   return (
@@ -98,6 +103,15 @@ export function Dashboard() {
               ))}
             </div>
             <SectionDescription title="Recent Posts" />
+            {post.map(({ title, date, description, tags }) => (
+              <Post
+                title={title}
+                date={date}
+                description={description}
+                tags={tags}
+                key={title}
+              />
+            ))}
           </Content>
         </Grid>
       </Container>

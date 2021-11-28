@@ -12,7 +12,8 @@ export const Content = styled.div`
   height: 30px;
 
   span {
-    font-size: 0.675rem;
+    font-size: 0.625rem;
     color: var(--body-bg-color);
+    font-weight: 700;
   }
 `;
